@@ -121,7 +121,7 @@ const bondFilms = [
 
 let bondTitles = []; 		// Start an array to collect the titles.
 for (let i = 0; i < bondFilms.length; i++) {	// run a for-loop through the entire size of the bondFilms. There are 13 of them. 
-	bondTitles.push(bondFilms[i].title);		// each step of the loop, the array is called by `bondFilms[i]`. Then the title of that movie is called by `bondFilms[i].title`. This value is `push`ed and collected into the array `bondTitles`
+	bondTitles.push(bondFilms[i].title)		// each step of the loop, the array is called by `bondFilms[i]`. Then the title of that movie is called by `bondFilms[i].title`. This value is `push`ed and collected into the array `bondTitles`
 }
 console.log(bondTitles);
 
@@ -135,10 +135,8 @@ for (let i = 0; i < bondFilms.length; i++) {
 console.log(oddBonds);
 
 // Determine the total cumulative gross of the Bond franchise, and console.log the result. _hint_ To make the grosses into usable numbers, look into the `.replace` Javascript method (there are many ways to do this, however). Look into `parseInt` also.
-console.log("123,456,789".replace(/\,/g,""));
 let totalGross = 0;
 for (let i = 0; i < bondFilms.length; i++) {
-	console.log(bondFilms[i].gross.replace(/\,/g,""));
-	// totalGross += Number(bondFilms[i].gross.replace(/\,/g,""));		
+	totalGross += Number(bondFilms[i].gross.replace(/[,$]/g,""));	// Use regex global search for commas and question marks, and remove them. Each term has to be converted to number for summation.	
 }
-console.log(totalGross);
+console.log("Total gross: $" + totalGross.toString().split('').reverse().join('').replace(/(\d{3})/g,"$1,").split('').reverse().join(''));
