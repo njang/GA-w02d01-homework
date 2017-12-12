@@ -3,17 +3,41 @@
 // For each of the following, write which **datatypes** you would use to represent the data, and then give a small example of the **data structure**:
 
 // 1. A light switch that can be either on or off.
-// boolean
+let lightSwitch = true; 	//	boolean
 // 2. A user's email address.
-// string
+let userEmail = "hello@generalassemb.ly"	// string
 // 3. A spaceship with a hull, laser blasters, tractor beam, and warp drive.
-// object
+let spaceship = ["hull", "laserBlasters", "tractorBeam", "warpDrive"];	// object
 // 4. A list of student names from our class.
-// array
+let students = ["Scott", "Jake", "Marcy", "Tess", "Lillian", "Aleena", "Max", "Chris", "Khoa", "Jorge"];	// array
 // 5. A list of student names from our class, each with a location.
-// array
+students = [
+	"Scott": [location: "Austin"], 
+	"Jake": [location: "Austin"], 
+	"Marcy": [location: "Austin"], 
+	"Tess": [location: "Austin"], 
+	"Lillian": [location: "Austin"], 
+	"Aleena": [location: "Dallas"], 
+	"Max": [location: "Austin"], 
+	"Chris": [location: "Austin"], 
+	"Khoa": [location: "Houston"], 
+	"Jorge": [location: "Dallas"],
+	"Neo": [location: "Austin"]
+];
 // 6. A list of student names from our class, each with a location and each with a list of favorite tv shows.
-// array
+students = [
+	"Scott": [location: "Austin", favoriteShow: "Mr.Robot"], 
+	"Jake": [location: "Austin", favoriteShow: "Parks & Recreation"], 
+	"Marcy": [location: "Austin", favoriteShow: "Price is Right"], 
+	"Tess": [location: "Austin", favoriteShow: "Game of Thrones"], 
+	"Lillian": [location: "Austin", favoriteShow: "Silicon Valley"], 
+	"Aleena": [location: "Dallas", favoriteShow: "The Office"], 
+	"Max": [location: "Austin", favoriteShow: "Breaking Bad"], 
+	"Chris": [location: "Austin", favoriteShow: "Family Feud"], 
+	"Khoa": [location: "Houston", favoriteShow: "Jeopardy"], 
+	"Jorge": [location: "Dallas", favoriteShow: "Stranger Things"],
+	"Neo": [location: "Austin", favoriteShow: "Futurama"]
+];
 
 // ## Take it Easy
 // 1. Make an array that holds all of the colors of the rainbow.
