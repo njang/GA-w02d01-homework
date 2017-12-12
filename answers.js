@@ -118,9 +118,10 @@ const bondFilms = [
 ];
 
 // Create a new array called `bondTitles` with only the titles of the Bond films, and console.log the new array.
-let bondTitles = [];
-for (let i = 0; i < bondFilms.length; i++) {
-	bondTitles.push(bondFilms[i].title);
+
+let bondTitles = []; 		// Start an array to collect the titles.
+for (let i = 0; i < bondFilms.length; i++) {	// run a for-loop through the entire size of the bondFilms. There are 13 of them. 
+	bondTitles.push(bondFilms[i].title);		// each step of the loop, the array is called by `bondFilms[i]`. Then the title of that movie is called by `bondFilms[i].title`. This value is `push`ed and collected into the array `bondTitles`
 }
 console.log(bondTitles);
 
@@ -134,4 +135,10 @@ for (let i = 0; i < bondFilms.length; i++) {
 console.log(oddBonds);
 
 // Determine the total cumulative gross of the Bond franchise, and console.log the result. _hint_ To make the grosses into usable numbers, look into the `.replace` Javascript method (there are many ways to do this, however). Look into `parseInt` also.
-console.log("123,456,789".replace(",",""));
+console.log("123,456,789".replace(/\,/g,""));
+let totalGross = 0;
+for (let i = 0; i < bondFilms.length; i++) {
+	console.log(bondFilms[i].gross.replace(/\,/g,""));
+	// totalGross += Number(bondFilms[i].gross.replace(/\,/g,""));		
+}
+console.log(totalGross);
