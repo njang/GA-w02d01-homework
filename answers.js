@@ -11,33 +11,33 @@ let spaceship = ["hull", "laserBlasters", "tractorBeam", "warpDrive"];	// object
 // 4. A list of student names from our class.
 let students = ["Scott", "Jake", "Marcy", "Tess", "Lillian", "Aleena", "Max", "Chris", "Khoa", "Jorge"];	// array
 // 5. A list of student names from our class, each with a location.
-students = [
-	"Scott": [location: "Austin"], 
-	"Jake": [location: "Austin"], 
-	"Marcy": [location: "Austin"], 
-	"Tess": [location: "Austin"], 
-	"Lillian": [location: "Austin"], 
-	"Aleena": [location: "Dallas"], 
-	"Max": [location: "Austin"], 
-	"Chris": [location: "Austin"], 
-	"Khoa": [location: "Houston"], 
-	"Jorge": [location: "Dallas"],
-	"Neo": [location: "Austin"]
-];
+students = {
+	"Scott": {location: "Austin"}, 
+	"Jake": {location: "Austin"}, 
+	"Marcy": {location: "Austin"}, 
+	"Tess": {location: "Austin"}, 
+	"Lillian": {location: "Austin"}, 
+	"Aleena": {location: "Dallas"}, 
+	"Max": {location: "Austin"}, 
+	"Chris": {location: "Austin"}, 
+	"Khoa": {location: "Houston"}, 
+	"Jorge": {location: "Dallas"},
+	"Neo": {location: "Austin"}
+};
 // 6. A list of student names from our class, each with a location and each with a list of favorite tv shows.
-students = [
-	"Scott": [location: "Austin", favoriteShow: "Mr.Robot"], 
-	"Jake": [location: "Austin", favoriteShow: "Parks & Recreation"], 
-	"Marcy": [location: "Austin", favoriteShow: "Price is Right"], 
-	"Tess": [location: "Austin", favoriteShow: "Game of Thrones"], 
-	"Lillian": [location: "Austin", favoriteShow: "Silicon Valley"], 
-	"Aleena": [location: "Dallas", favoriteShow: "The Office"], 
-	"Max": [location: "Austin", favoriteShow: "Breaking Bad"], 
-	"Chris": [location: "Austin", favoriteShow: "Family Feud"], 
-	"Khoa": [location: "Houston", favoriteShow: "Jeopardy"], 
-	"Jorge": [location: "Dallas", favoriteShow: "Stranger Things"],
-	"Neo": [location: "Austin", favoriteShow: "Futurama"]
-];
+students = {
+	"Scott": {location: "Austin", favoriteShow: "Mr.Robot"}, 
+	"Jake": {location: "Austin", favoriteShow: "Parks & Recreation"}, 
+	"Marcy": {location: "Austin", favoriteShow: "Price is Right"}, 
+	"Tess": {location: "Austin", favoriteShow: "Game of Thrones"}, 
+	"Lillian": {location: "Austin", favoriteShow: "Silicon Valley"}, 
+	"Aleena": {location: "Dallas", favoriteShow: "The Office"}, 
+	"Max": {location: "Austin", favoriteShow: "Breaking Bad"}, 
+	"Chris": {location: "Austin", favoriteShow: "Family Feud"}, 
+	"Khoa": {location: "Houston", favoriteShow: "Jeopardy"}, 
+	"Jorge": {location: "Dallas", favoriteShow: "Stranger Things"},
+	"Neo": {location: "Austin", favoriteShow: "Futurama"}
+};
 
 // ## Take it Easy
 // 1. Make an array that holds all of the colors of the rainbow.
@@ -163,4 +163,38 @@ let totalGross = 0;
 for (let i = 0; i < bondFilms.length; i++) {
 	totalGross += Number(bondFilms[i].gross.replace(/[,$]/g,""));	// Use regex global search for commas and question marks, and remove them. Each term has to be converted to number for summation.	
 }
+// See the total gross. To make the number look more easily readable, add dollar sign in front and commas every three digits of the number.
+// Doing the latter is accomplished by 1) converting number to strings, 2) string to arrays, 3) reversing the array, 4) concatenating the array back to string, 6) adding comma at every 3 digits of numbers starting from the left side, 5) converting the string back to array, 6) reversing the array, and 7) concatenating the array back to string. 
 console.log("Total gross: $" + totalGross.toString().split('').reverse().join('').replace(/(\d{3})/g,"$1,").split('').reverse().join(''));
+
+
+// Construc an object that logs the number of appearances by each actor.
+let actorFreq = {};
+for (let i = 0; i < bondFilms.length; i++) {
+	if (!actorFreq[bondFilms[i].actor]) {
+		actorFreq[bondFilms[i].actor] = 0;
+	} 
+	actorFreq[bondFilms[i].actor]++;	
+};
+
+// Sort the object `actorFreq` by first converting it to an array.
+var actorSorted = [];
+for (var actor in actorFreq ) {
+    actorSorted.push([actor, actorFreq[actor]]);
+}
+
+// Then sort in the ascending order of appearances.
+actorSorted.sort(function(a, b) {
+    return a[1] - b[1];
+});
+
+// See the result.
+console.log(actorSorted);	// => [ [ 'George Lazenby', 1 ], [ 'Timothy Dalton', 2 ], [ 'Daniel Craig', 3 ], [ 'Pierce Brosnan', 4 ], [ 'Sean Connery', 6 ], [ 'Roger Moore', 7 ] ]
+
+
+// Using this sorted list, find the movie info.
+for (let i = 0; i < bondFilms.length; i++) {
+	if (bondFilms[i].actor === actorSorted[0][0]) {
+		console.log(bondFilms[i]);
+	}
+}
